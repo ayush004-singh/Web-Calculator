@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator Program in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: radial-gradient( black,gold);
+    }
+
+    h2 {
+      display: inline-flexbox;
+      background:linear-gradient(to left , black ,rgb(65, 40, 40));
+      padding: 20px;
+      color: goldenrod;
+      margin-top: 0;
+      width: 100%;
+
+     
+    }
+
+    #calculator {
+      background: rgb(42, 32, 32);
+      width: 260px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 2px solid gold;
+      border-radius: 10px;
+    }
+
+    input[type="text"] {
+    
+      width: 90%;
+      height: 60px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .btn {
+      height: 50px;
+      font-size: 20px;
+      background-color:goldenrod;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color:greenyellow;
+    }
+
+    .clear {
+      width: 100%;
+      background-color: red;
+      margin-top: 20px;
+    }
+
+    .clear:hover {
+      background-color: rgb(188, 138, 138);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calculator Program in JavaScript</h2>
+
+  <div id="calculator">
+    <input type="text" id="result" >
+
+    <div class="grid">
+      <button class="btn" onclick="append('1')">1</button>
+      <button class="btn" onclick="append('2')">2</button>
+      <button class="btn" onclick="append('3')">3</button>
+      <button class="btn" onclick="append('+')">+</button>
+
+      <button class="btn" onclick="append('4')">4</button>
+      <button class="btn" onclick="append('5')">5</button>
+      <button class="btn" onclick="append('6')">6</button>
+      <button class="btn" onclick="append('-')">-</button>
+
+      <button class="btn" onclick="append('7')">7</button>
+      <button class="btn" onclick="append('8')">8</button>
+      <button class="btn" onclick="append('9')">9</button>
+      <button class="btn" onclick="append('')"></button>
+
+      <button class="btn" onclick="append('/')">/</button>
+      <button class="btn" onclick="append('0')">0</button>
+      <button class="btn" onclick="append('.')">.</button>
+      <button class="btn" onclick="calculate()">=</button>
+    </div>
+
+    <button class="btn clear" onclick="clearResult()">Clear All</button>
+  </div>
+
+  <script>
+    function append(value) {
+      const result = document.getElementById("result");
+      // Prevent starting with operator
+      if (['+', '-', '*', '/'].includes(value) && result.value === '') return;
+      result.value += value;
+    }
+
+    function clearResult() {
+      document.getElementById("result").value = "";
+    }
+
+    function calculate() {
+      const result = document.getElementById("result");
+      try {
+        result.value = eval(result.value);
+      } catch {
+        result.value = "Error";
+      }
+    }
+  </script>
+
+</body>
+</html
